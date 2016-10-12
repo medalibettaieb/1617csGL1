@@ -1,8 +1,10 @@
 package entities;
 
 import java.io.Serializable;
-import java.lang.String;
-import javax.persistence.*;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  * Entity implementation class for Entity: Product
@@ -12,22 +14,27 @@ import javax.persistence.*;
 
 public class Product implements Serializable {
 
-	   
+	private static final long serialVersionUID = 1L;
 	@Id
 	private int id;
 	private String name;
-	private static final long serialVersionUID = 1L;
+	private Float price;
+
+	@ManyToOne
+	private User user;
 
 	public Product() {
 		super();
-	}   
+	}
+
 	public int getId() {
 		return this.id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
-	}   
+	}
+
 	public String getName() {
 		return this.name;
 	}
@@ -35,5 +42,21 @@ public class Product implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-   
+
+	public Float getPrice() {
+		return price;
+	}
+
+	public void setPrice(Float price) {
+		this.price = price;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 }
