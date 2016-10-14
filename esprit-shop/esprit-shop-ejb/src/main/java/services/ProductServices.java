@@ -1,18 +1,28 @@
 package services;
 
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import entities.Product;
 
 /**
  * Session Bean implementation class ProductServices
  */
 @Stateless
 public class ProductServices implements ProductServicesRemote, ProductServicesLocal {
+	@PersistenceContext
+	private EntityManager entityManager;
 
-    /**
-     * Default constructor. 
-     */
-    public ProductServices() {
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * Default constructor.
+	 */
+	public ProductServices() {
+	}
+
+	@Override
+	public void addProduct(Product product) {
+		entityManager.persist(product);
+	}
 
 }
