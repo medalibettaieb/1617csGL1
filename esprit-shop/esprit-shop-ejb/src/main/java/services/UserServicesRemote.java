@@ -1,5 +1,7 @@
 package services;
 
+import java.util.List;
+
 import javax.ejb.Remote;
 
 import entities.User;
@@ -15,4 +17,6 @@ public interface UserServicesRemote {
 	void deleteUser(User user);
 
 	void updateUser(User user);
+
+	List<User> findAllUsers();
 }
