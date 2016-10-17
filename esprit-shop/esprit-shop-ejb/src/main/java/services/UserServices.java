@@ -25,4 +25,24 @@ public class UserServices implements UserServicesRemote, UserServicesLocal {
 		entityManager.persist(user);
 	}
 
+	@Override
+	public User findUserById(int idUser) {
+		return entityManager.find(User.class, idUser);
+	}
+
+	@Override
+	public void deleteUserById(int idUser) {
+		entityManager.remove(findUserById(idUser));
+	}
+
+	@Override
+	public void deleteUser(User user) {
+		entityManager.remove(entityManager.merge(user));
+	}
+
+	@Override
+	public void updateUser(User user) {
+		entityManager.merge(user);
+	}
+
 }
