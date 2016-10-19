@@ -21,10 +21,10 @@ public class Product implements Serializable {
 	private int id;
 	private String name;
 	private Float price;
-	private static final long serialVersionUID = 1L;
+	
 	@ManyToOne
-	private User user;
-
+	private User provider;
+	private static final long serialVersionUID = 1L;
 	public Product() {
 		super();
 	}
@@ -53,12 +53,14 @@ public class Product implements Serializable {
 		this.price = price;
 	}
 
-	public User getUser() {
-		return user;
+	public User getProvider() {
+		return provider;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setProvider(User provider) {
+		this.provider = provider;
 	}
+
+	
 
 }

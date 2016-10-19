@@ -23,7 +23,7 @@ public class User implements Serializable {
 	private int id;
 	private String name;
 
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "provider")
 	private List<Product> products;
 
 	public User() {

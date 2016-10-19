@@ -10,4 +10,6 @@ public interface ProductServicesRemote {
 
 	void addProductWithCompany(Product product, int idCompany);
 
+	void updateProduct(Product product);
+
 }
