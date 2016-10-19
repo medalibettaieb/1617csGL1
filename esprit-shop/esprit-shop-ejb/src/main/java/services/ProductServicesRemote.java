@@ -7,4 +7,7 @@ import entities.Product;
 @Remote
 public interface ProductServicesRemote {
 	void addProduct(Product product);
+
+	void addProductWithCompany(Product product, int idCompany);
+
 }

@@ -7,9 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class User implements Serializable {
 	/**
 	 * 
@@ -19,7 +22,6 @@ public class User implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
-	private Float balance;
 
 	@OneToMany(mappedBy = "user")
 	private List<Product> products;
@@ -41,14 +43,6 @@ public class User implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public Float getBalance() {
-		return balance;
-	}
-
-	public void setBalance(Float balance) {
-		this.balance = balance;
 	}
 
 	public List<Product> getProducts() {

@@ -25,4 +25,11 @@ public class ProductServices implements ProductServicesRemote, ProductServicesLo
 		entityManager.persist(product);
 	}
 
+	@Override
+	public void addProductWithCompany(Product product, int idCompany) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 }
