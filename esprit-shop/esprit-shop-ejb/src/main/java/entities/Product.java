@@ -29,6 +29,12 @@ public class Product implements Serializable {
 		super();
 	}
 
+	public Product(String name, Float price) {
+		super();
+		this.name = name;
+		this.price = price;
+	}
+
 	public int getId() {
 		return this.id;
 	}

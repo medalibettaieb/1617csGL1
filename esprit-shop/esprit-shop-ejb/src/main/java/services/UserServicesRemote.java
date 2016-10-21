@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.Remote;
 
+import entities.Product;
 import entities.User;
 
 @Remote
@@ -19,4 +20,6 @@ public interface UserServicesRemote {
 	void updateUser(User user);
 
 	List<User> findAllUsers();
+
+	void assignProductsToUser(List<Product> products, int idProvider);
 }

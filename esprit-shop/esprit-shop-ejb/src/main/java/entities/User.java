@@ -3,6 +3,7 @@ package entities;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,7 +24,7 @@ public class User implements Serializable {
 	private int id;
 	private String name;
 
-	@OneToMany(mappedBy = "provider")
+	@OneToMany(mappedBy = "provider", cascade = CascadeType.MERGE)
 	private List<Product> products;
 
 	public User() {
@@ -51,6 +52,14 @@ public class User implements Serializable {
 
 	public void setProducts(List<Product> products) {
 		this.products = products;
+	}
+
+	public void linkProductsToThisUser(List<Product> products) {
+		this.products = products;
+		for (Product p : products) {
+			p.setProvider(this);
+
+		}
 	}
 
 }
