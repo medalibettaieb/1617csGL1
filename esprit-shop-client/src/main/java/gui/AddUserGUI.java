@@ -18,13 +18,13 @@ public class AddUserGUI {
 		Customer customer = new Customer();
 		customer.setName("salah");
 		customer.setBalance(100F);
-		
-		Company company=new Company();
+
+		Company company = new Company();
 		company.setName("sdf");
 		company.setLogo("street");
 
-		userServicesRemote.addUser(customer);
-		userServicesRemote.addUser(company);
+		userServicesRemote.saveOrUpadate(customer);
+		userServicesRemote.saveOrUpadate(company);
 
 	}
 

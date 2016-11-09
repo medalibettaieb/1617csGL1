@@ -33,6 +33,11 @@ public class User implements Serializable {
 	public User() {
 	}
 
+	public User(String name) {
+		super();
+		this.name = name;
+	}
+
 	public int getId() {
 		return id;
 	}

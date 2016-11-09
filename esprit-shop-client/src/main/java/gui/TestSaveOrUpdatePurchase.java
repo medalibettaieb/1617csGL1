@@ -13,7 +13,7 @@ public class TestSaveOrUpdatePurchase {
 		ProductServicesRemote productServicesRemote = (ProductServicesRemote) context
 				.lookup("esprit-shop-ear/esprit-shop-ejb/ProductServices!services.ProductServicesRemote");
 
-		productServicesRemote.saveOrUpdatePurchase(1, 1, 10);
+		productServicesRemote.saveOrUpdatePurchase(1, 1, 2);
 	}
 
 }

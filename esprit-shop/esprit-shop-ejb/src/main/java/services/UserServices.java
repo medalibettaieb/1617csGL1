@@ -26,11 +26,6 @@ public class UserServices implements UserServicesRemote, UserServicesLocal {
 	}
 
 	@Override
-	public void addUser(User user) {
-		entityManager.persist(user);
-	}
-
-	@Override
 	public User findUserById(int idUser) {
 		return entityManager.find(User.class, idUser);
 	}
@@ -43,11 +38,6 @@ public class UserServices implements UserServicesRemote, UserServicesLocal {
 	@Override
 	public void deleteUser(User user) {
 		entityManager.remove(entityManager.merge(user));
-	}
-
-	@Override
-	public void updateUser(User user) {
-		entityManager.merge(user);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -63,8 +53,13 @@ public class UserServices implements UserServicesRemote, UserServicesLocal {
 		Company company = (Company) findUserById(idProvider);
 		company.linkProductsToThisUser(products);
 
-		updateUser(company);
+		saveOrUpadate(company);
 
+	}
+
+	@Override
+	public void saveOrUpadate(User user) {
+		entityManager.merge(user);
 	}
 
 }

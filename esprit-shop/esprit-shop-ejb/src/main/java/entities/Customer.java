@@ -19,7 +19,13 @@ public class Customer extends User implements Serializable {
 
 	public Customer() {
 		super();
-	}   
+	} 
+	
+	public Customer(String name, Float balance) {
+		super(name);
+		this.balance = balance;
+	}
+
 	public Float getBalance() {
 		return this.balance;
 	}

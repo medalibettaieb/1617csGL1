@@ -19,7 +19,13 @@ public class Company extends User implements Serializable {
 
 	public Company() {
 		super();
-	}   
+	} 
+	
+	public Company(String name, String logo) {
+		super(name);
+		this.logo = logo;
+	}
+
 	public String getLogo() {
 		return this.logo;
 	}

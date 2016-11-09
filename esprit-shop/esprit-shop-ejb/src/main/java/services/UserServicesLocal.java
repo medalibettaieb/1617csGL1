@@ -8,15 +8,13 @@ import entities.User;
 
 @Local
 public interface UserServicesLocal {
-	void addUser(User user);
-
 	User findUserById(int idUser);
 
 	void deleteUserById(int idUser);
 
 	void deleteUser(User user);
 
-	void updateUser(User user);
+	void saveOrUpadate(User user);
 
 	List<User> findAllUsers();
 }
