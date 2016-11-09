@@ -1,12 +1,14 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  * Entity implementation class for Entity: Product
@@ -21,10 +23,14 @@ public class Product implements Serializable {
 	private int id;
 	private String name;
 	private Float price;
-	
+
 	@ManyToOne
 	private User provider;
+
+	@OneToMany(mappedBy = "product")
+	private List<PurchaseDetail> purchaseDetails;
 	private static final long serialVersionUID = 1L;
+
 	public Product() {
 		super();
 	}
@@ -67,6 +73,12 @@ public class Product implements Serializable {
 		this.provider = provider;
 	}
 
-	
+	public List<PurchaseDetail> getPurchaseDetails() {
+		return purchaseDetails;
+	}
+
+	public void setPurchaseDetails(List<PurchaseDetail> purchaseDetails) {
+		this.purchaseDetails = purchaseDetails;
+	}
 
 }

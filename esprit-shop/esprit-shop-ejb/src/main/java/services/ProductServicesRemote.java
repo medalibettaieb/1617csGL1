@@ -12,4 +12,8 @@ public interface ProductServicesRemote {
 
 	void updateProduct(Product product);
 
+	void saveOrUpdatePurchase(int idCustomer, int idProduct, Integer quantity);
+
+	Product findProductById(int idProduct);
+
 }

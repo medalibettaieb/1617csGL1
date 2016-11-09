@@ -7,4 +7,6 @@ import entities.Product;
 @Local
 public interface ProductServicesLocal {
 	void addProduct(Product product);
+
+	Product findProductById(int idProduct);
 }

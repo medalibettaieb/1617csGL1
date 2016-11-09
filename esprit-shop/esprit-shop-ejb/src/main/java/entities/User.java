@@ -26,6 +26,9 @@ public class User implements Serializable {
 
 	@OneToMany(mappedBy = "provider", cascade = CascadeType.MERGE)
 	private List<Product> products;
+	
+	@OneToMany(mappedBy="customer")
+	private List<PurchaseDetail> purchaseDetails;
 
 	public User() {
 	}
@@ -60,6 +63,14 @@ public class User implements Serializable {
 			p.setProvider(this);
 
 		}
+	}
+
+	public List<PurchaseDetail> getPurchaseDetails() {
+		return purchaseDetails;
+	}
+
+	public void setPurchaseDetails(List<PurchaseDetail> purchaseDetails) {
+		this.purchaseDetails = purchaseDetails;
 	}
 
 }

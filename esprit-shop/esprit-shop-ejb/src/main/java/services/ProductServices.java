@@ -7,6 +7,8 @@ import javax.persistence.PersistenceContext;
 
 import entities.Company;
 import entities.Product;
+import entities.PurchaseDetail;
+import entities.User;
 
 /**
  * Session Bean implementation class ProductServices
@@ -41,6 +43,20 @@ public class ProductServices implements ProductServicesRemote, ProductServicesLo
 	@Override
 	public void updateProduct(Product product) {
 		entityManager.merge(product);
+	}
+
+	@Override
+	public void saveOrUpdatePurchase(int idCustomer, int idProduct, Integer quantity) {
+		User customer = userServicesLocal.findUserById(idCustomer);
+		Product product = findProductById(idProduct);
+		PurchaseDetail purchaseDetail = new PurchaseDetail(quantity, customer, product);
+		entityManager.merge(purchaseDetail);
+
+	}
+
+	@Override
+	public Product findProductById(int idProduct) {
+		return entityManager.find(Product.class, idProduct);
 	}
 
 }
