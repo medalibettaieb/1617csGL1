@@ -1,5 +1,7 @@
 package services;
 
+import java.util.Map;
+
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -24,11 +26,6 @@ public class ProductServices implements ProductServicesRemote, ProductServicesLo
 	 * Default constructor.
 	 */
 	public ProductServices() {
-	}
-
-	@Override
-	public void addProduct(Product product) {
-		entityManager.persist(product);
 	}
 
 	@Override
@@ -57,6 +54,18 @@ public class ProductServices implements ProductServicesRemote, ProductServicesLo
 	@Override
 	public Product findProductById(int idProduct) {
 		return entityManager.find(Product.class, idProduct);
+	}
+
+	@Override
+	public void saveOrUpdateProduct(Product product) {
+		entityManager.merge(product);
+
+	}
+
+	@Override
+	public Map<Product, Integer> findToTalQuantitySoldOfProductByStore(int storeId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

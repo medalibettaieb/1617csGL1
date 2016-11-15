@@ -18,7 +18,7 @@ public class AddProductGUI {
 		product.setName("saboon");
 		product.setPrice(100F);
 
-		productServicesRemote.addProduct(product);
+		productServicesRemote.saveOrUpdateProduct(product);
 	}
 
 }

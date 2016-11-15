@@ -1,12 +1,14 @@
 package services;
 
+import java.util.Map;
+
 import javax.ejb.Remote;
 
 import entities.Product;
 
 @Remote
 public interface ProductServicesRemote {
-	void addProduct(Product product);
+	void saveOrUpdateProduct(Product product);
 
 	void addProductWithCompany(Product product, int idCompany);
 
@@ -15,5 +17,7 @@ public interface ProductServicesRemote {
 	void saveOrUpdatePurchase(int idCustomer, int idProduct, Integer quantity);
 
 	Product findProductById(int idProduct);
+
+	Map<Product, Integer> findToTalQuantitySoldOfProductByStore(int storeId);
 
 }

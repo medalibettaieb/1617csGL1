@@ -17,6 +17,7 @@ import entities.Company;
 import entities.Customer;
 import entities.Product;
 import entities.Store;
+import services.CityServicesLocal;
 import services.ProductServicesLocal;
 import services.UserServicesLocal;
 
@@ -32,6 +33,8 @@ public class Util {
 	@EJB
 	private UserServicesLocal userServicesLocal;
 	@EJB
+	private CityServicesLocal cityServicesLocal;
+	@EJB
 	private ProductServicesLocal productServicesLocal;
 
 	/**
@@ -42,50 +45,85 @@ public class Util {
 
 	@PostConstruct
 	public void initDB() {
-		City city = new City("jupiter");
+		// create users
+		Customer customer = new Customer("salah", 500F);
+		Customer customer2 = new Customer("emna", 600F);
+		Customer customer3 = new Customer("sofiene", 400F);
 
+		// create 3 companies
+		Company company = new Company();
+		company.setName("ABC");
+		company.setLogo("street");
+
+		Company company2 = new Company();
+		company2.setName("SmartOne");
+		company2.setLogo("teck");
+
+		Company company3 = new Company();
+		company3.setName("SelfMarcket");
+		company3.setLogo("you");
+
+		// create Products
+		Product product = new Product("chleka", 10F);
+		product.setCategory(Category.LABSA);
+
+		Product product2 = new Product("saboun", 15F);
+		product2.setCategory(Category.MAWAD_TANDHIF);
+
+		Product product3 = new Product("tajine", 20F);
+		product3.setCategory(Category.MEKLA);
+
+		Product product4 = new Product("ma9rouna", 25F);
+		product4.setCategory(Category.MEKLA);
+
+		// link products to companies
+		List<Product> products = new ArrayList<>();
+		products.add(product);
+		products.add(product2);
+
+		company.linkProductsToThisUser(products);
+
+		List<Product> products2 = new ArrayList<>();
+		products2.add(product3);
+
+		company2.linkProductsToThisUser(products2);
+
+		List<Product> products3 = new ArrayList<>();
+		products3.add(product4);
+
+		company3.linkProductsToThisUser(products3);
+
+		// create 2 cities
+		City city = new City("eastSide");
+		City city2 = new City("ouestSide");
+
+		// create 3 stores
 		Store store = new Store("storeOne");
 		Store store2 = new Store("storeTow");
 		Store store3 = new Store("storeThree");
 
+		// link stores to cities
 		List<Store> stores = new ArrayList<>();
 		stores.add(store);
 		stores.add(store2);
-		stores.add(store3);
+
+		List<Store> stores2 = new ArrayList<>();
+		stores2.add(store3);
 
 		city.linkStoresToThisCity(stores);
+		city2.linkStoresToThisCity(stores2);
 
-		Customer customer = new Customer();
-		customer.setName("salah");
-		customer.setBalance(100F);
-
-		Company company = new Company();
-		company.setName("sdf");
-		company.setLogo("street");
-
-		Category category = new Category();
-		category.setName("labsa");
-
-		Category category2 = new Category();
-		category2.setName("mawad tandhif");
-
-		Product product = new Product("saboon", 10F);
-		product.setCategory(category2);
-		Product product2 = new Product("chleka", 15F);
-		product2.setCategory(category);
-		Product product3 = new Product("sabbat", 20F);
-		product3.setCategory(category);
-
-		List<Product> products = new ArrayList<>();
-		products.add(product);
-		products.add(product2);
-		products.add(product3);
-
-		company.linkProductsToThisUser(products);
+		// ............................
 
 		userServicesLocal.saveOrUpadate(customer);
-		userServicesLocal.saveOrUpadate(company);
+		userServicesLocal.saveOrUpadate(customer2);
+		userServicesLocal.saveOrUpadate(customer3);
 
-		entityManager.merge(city);
+		userServicesLocal.saveOrUpadate(company);
+		userServicesLocal.saveOrUpadate(company2);
+		userServicesLocal.saveOrUpadate(company3);
+
+		cityServicesLocal.saveOrUpdateCity(city);
+		cityServicesLocal.saveOrUpdateCity(city2);
 	}
 }
