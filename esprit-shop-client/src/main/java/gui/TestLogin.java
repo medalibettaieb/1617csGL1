@@ -14,7 +14,7 @@ public class TestLogin {
 		UserServicesRemote userServicesRemote = (UserServicesRemote) context
 				.lookup("esprit-shop-ear/esprit-shop-ejb/UserServices!services.UserServicesRemote");
 
-		User user = userServicesRemote.login("C1", "C1");
+		User user = userServicesRemote.login("c1", "c1");
 		System.out.println(user);
 
 	}

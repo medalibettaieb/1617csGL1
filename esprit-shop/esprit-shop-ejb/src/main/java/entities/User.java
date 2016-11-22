@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,13 +24,14 @@ public class User implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
+	@Column(unique = true)
 	private String login;
 	private String password;
 
 	@OneToMany(mappedBy = "provider", cascade = CascadeType.MERGE)
 	private List<Product> products;
-	
-	@OneToMany(mappedBy="customer")
+
+	@OneToMany(mappedBy = "customer")
 	private List<PurchaseDetail> purchaseDetails;
 
 	public User() {

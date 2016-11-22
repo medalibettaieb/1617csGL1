@@ -60,20 +60,20 @@ public class Util {
 		Company company = new Company();
 		company.setName("ABC");
 		company.setLogo("street");
-		company.setLogin("C1");
-		company.setPassword("C1");
+		company.setLogin("COM1");
+		company.setPassword("COM1");
 
 		Company company2 = new Company();
 		company2.setName("SmartOne");
 		company2.setLogo("teck");
-		company2.setLogin("C2");
-		company2.setPassword("C2");
+		company2.setLogin("COM2");
+		company2.setPassword("COM2");
 
 		Company company3 = new Company();
 		company3.setName("SelfMarcket");
 		company3.setLogo("you");
-		company3.setLogin("C3");
-		company3.setPassword("C3");
+		company3.setLogin("COM3");
+		company3.setPassword("COM3");
 
 		// create Products
 		Product product = new Product("chleka", 10F);

@@ -71,7 +71,6 @@ public class UserServices implements UserServicesRemote, UserServicesLocal {
 		try {
 			user = (User) query.getSingleResult();
 		} catch (Exception e) {
-			System.out.println("user not found");
 		}
 		return user;
 	}
