@@ -20,4 +20,6 @@ public interface UserServicesRemote {
 	List<User> findAllUsers();
 
 	void assignProductsToUser(List<Product> products, int idProvider);
+
+	User login(String login, String password);
 }

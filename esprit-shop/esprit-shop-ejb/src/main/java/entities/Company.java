@@ -33,5 +33,10 @@ public class Company extends User implements Serializable {
 	public void setLogo(String logo) {
 		this.logo = logo;
 	}
+
+	@Override
+	public String toString() {
+		return "Company [logo=" + logo + "]";
+	}
    
 }

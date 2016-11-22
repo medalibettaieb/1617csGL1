@@ -47,21 +47,33 @@ public class Util {
 	public void initDB() {
 		// create users
 		Customer customer = new Customer("salah", 500F);
+		customer.setLogin("c1");
+		customer.setPassword("c1");
 		Customer customer2 = new Customer("emna", 600F);
+		customer2.setLogin("c2");
+		customer2.setPassword("c2");
 		Customer customer3 = new Customer("sofiene", 400F);
+		customer3.setLogin("c3");
+		customer3.setPassword("c3");
 
 		// create 3 companies
 		Company company = new Company();
 		company.setName("ABC");
 		company.setLogo("street");
+		company.setLogin("C1");
+		company.setPassword("C1");
 
 		Company company2 = new Company();
 		company2.setName("SmartOne");
 		company2.setLogo("teck");
+		company2.setLogin("C2");
+		company2.setPassword("C2");
 
 		Company company3 = new Company();
 		company3.setName("SelfMarcket");
 		company3.setLogo("you");
+		company3.setLogin("C3");
+		company3.setPassword("C3");
 
 		// create Products
 		Product product = new Product("chleka", 10F);

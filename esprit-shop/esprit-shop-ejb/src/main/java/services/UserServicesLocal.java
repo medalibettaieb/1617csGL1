@@ -17,4 +17,6 @@ public interface UserServicesLocal {
 	void saveOrUpadate(User user);
 
 	List<User> findAllUsers();
+
+	User login(String login, String password);
 }

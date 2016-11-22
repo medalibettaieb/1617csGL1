@@ -62,4 +62,18 @@ public class UserServices implements UserServicesRemote, UserServicesLocal {
 		entityManager.merge(user);
 	}
 
+	@Override
+	public User login(String login, String password) {
+		User user = null;
+		Query query = entityManager.createQuery("SELECT u FROM User u WHERE u.login=:param1 AND u.password=:param2");
+		query.setParameter("param1", login);
+		query.setParameter("param2", password);
+		try {
+			user = (User) query.getSingleResult();
+		} catch (Exception e) {
+			System.out.println("user not found");
+		}
+		return user;
+	}
+
 }
