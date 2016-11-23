@@ -3,6 +3,7 @@ package mBeans;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import entities.Company;
 import entities.Customer;
@@ -30,6 +31,11 @@ public class Identity {
 			navigateTo = "/horror?faces-redirect=true";
 		}
 		return navigateTo;
+	}
+
+	public String logout() {
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		return "/login";
 	}
 
 	public User getUser() {

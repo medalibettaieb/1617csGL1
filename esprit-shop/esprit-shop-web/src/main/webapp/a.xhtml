@@ -6,19 +6,10 @@
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
 	template="/WEB-INF/template/template.xhtml">
 	<ui:define name="title">
-login
+a
 </ui:define>
-	<ui:define name="content">
-		<h:form>
-			<h:panelGrid columns="2">
-				<h:outputText value="login" />
-				<h:inputText value="#{identity.user.login}" />
-				<h:outputText value="password" />
-				<h:inputSecret value="#{identity.user.password}" />
-				<h:commandButton action="#{identity.doLogin()}" value="login" />
-			</h:panelGrid>
-
-		</h:form>
-	</ui:define>
+<ui:define name="content">
+hello
+</ui:define>
 
 </ui:composition>
