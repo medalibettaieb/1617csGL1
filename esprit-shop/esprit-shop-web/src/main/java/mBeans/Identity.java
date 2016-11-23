@@ -22,12 +22,12 @@ public class Identity {
 		if (userLoggedIn != null) {
 			user = userLoggedIn;
 			if (userLoggedIn instanceof Company) {
-				navigateTo = "/pages/companyHome/home";
+				navigateTo = "/pages/companyHome/home?faces-redirect=true";
 			} else if (userLoggedIn instanceof Customer) {
-				navigateTo = "/pages/customerHome/home";
+				navigateTo = "/pages/customerHome/home?faces-redirect=true";
 			}
 		} else {
-			navigateTo = "/horror";
+			navigateTo = "/horror?faces-redirect=true";
 		}
 		return navigateTo;
 	}
