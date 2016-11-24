@@ -1,5 +1,6 @@
 package services;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.ejb.Local;
@@ -20,4 +21,5 @@ public interface ProductServicesLocal {
 
 	Map<Product, Integer> findToTalQuantitySoldOfProductByStore(int storeId);
 
+	List<Product> findProductsByCompany(int companyId);
 }

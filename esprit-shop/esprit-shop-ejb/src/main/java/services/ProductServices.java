@@ -1,11 +1,13 @@
 package services;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import entities.Company;
 import entities.Product;
@@ -66,6 +68,14 @@ public class ProductServices implements ProductServicesRemote, ProductServicesLo
 	public Map<Product, Integer> findToTalQuantitySoldOfProductByStore(int storeId) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Product> findProductsByCompany(int companyId) {
+		Query query = entityManager.createQuery("SELECT p FROM Product p WHERE p.provider.id=:param");
+		query.setParameter("param", companyId);
+		return query.getResultList();
 	}
 
 }

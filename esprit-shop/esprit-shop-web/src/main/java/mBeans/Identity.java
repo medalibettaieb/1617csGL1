@@ -14,6 +14,7 @@ import services.UserServicesLocal;
 @SessionScoped
 public class Identity {
 	private User user = new User();
+	private Boolean isLogged = false;
 	@EJB
 	private UserServicesLocal userServicesLocal;
 
@@ -22,6 +23,7 @@ public class Identity {
 		User userLoggedIn = userServicesLocal.login(user.getLogin(), user.getPassword());
 		if (userLoggedIn != null) {
 			user = userLoggedIn;
+			isLogged = true;
 			if (userLoggedIn instanceof Company) {
 				navigateTo = "/pages/companyHome/home?faces-redirect=true";
 			} else if (userLoggedIn instanceof Customer) {
@@ -35,6 +37,7 @@ public class Identity {
 
 	public String logout() {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		isLogged = false;
 		return "/login";
 	}
 
@@ -46,4 +49,11 @@ public class Identity {
 		this.user = user;
 	}
 
+	public Boolean getIsLogged() {
+		return isLogged;
+	}
+
+	public void setIsLogged(Boolean isLogged) {
+		this.isLogged = isLogged;
+	}
 }
