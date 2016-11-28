@@ -1,0 +1,45 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	template="/WEB-INF/template/template.xhtml">
+	<ui:define name="title">
+manage products
+</ui:define>
+	<ui:define name="content">
+		<h:form id="f1" rendered="#{productBean.displayF1}">
+			<h:dataTable value="#{productBean.products}" var="p" border="2">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="name" />
+					</f:facet>
+					<h:outputText value="#{p.name}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="#" />
+					</f:facet>
+					<h:commandButton action="#{productBean.select()}" value="select">
+						<f:setPropertyActionListener value="#{p}"
+							target="#{productBean.product}"></f:setPropertyActionListener>
+					</h:commandButton>
+				</h:column>
+			</h:dataTable>
+			<h:commandButton action="update" value="NEW" />
+		</h:form>
+		<h:form id="f2" rendered="#{productBean.displayF2}">
+			<h:panelGrid columns="2">
+				<h:outputText value="name" />
+				<h:inputText value="#{productBean.product.name}" />
+			</h:panelGrid>
+			<h:commandButton action="update" value="delete" />
+			<h:commandButton action="update" value="save or update" />
+			<h:commandButton action="#{productBean.cancel()}" value="cancel" />
+
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>
