@@ -9,7 +9,15 @@
 customer home
 </ui:define>
 	<ui:define name="content">
-hello
-</ui:define>
+		<h1>you have #{cartBean.catMapSize} in your cart</h1>
+		<h:form>
+			<h:outputText value="product" />
+			<h:inputText value="#{cartBean.productId}" />
+			<h:outputText value="quantity" />
+			<h:inputText value="#{cartBean.quantity}" />
+			<h:commandButton action="#{cartBean.doAddToCart()}" value="add" />
+
+		</h:form>
+	</ui:define>
 
 </ui:composition>

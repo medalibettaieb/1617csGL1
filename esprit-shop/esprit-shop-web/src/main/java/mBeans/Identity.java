@@ -1,5 +1,7 @@
 package mBeans;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -17,6 +19,18 @@ public class Identity {
 	private Boolean isLogged = false;
 	@EJB
 	private UserServicesLocal userServicesLocal;
+
+	@PostConstruct
+	public void init() {
+		System.out.println("hey you i am alive");
+
+	}
+
+	@PreDestroy
+	public void ciao() {
+		System.out.println("hey you ciaoooo");
+
+	}
 
 	public String doLogin() {
 		String navigateTo = null;
