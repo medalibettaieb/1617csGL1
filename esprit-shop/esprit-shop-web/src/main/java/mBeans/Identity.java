@@ -25,7 +25,7 @@ public class Identity {
 			user = userLoggedIn;
 			isLogged = true;
 			if (userLoggedIn instanceof Company) {
-				navigateTo = "/pages/companyHome/home?faces-redirect=true";
+				navigateTo = "/pages/companyHome/manageProducts?faces-redirect=true";
 			} else if (userLoggedIn instanceof Customer) {
 				navigateTo = "/pages/customerHome/home?faces-redirect=true";
 			}

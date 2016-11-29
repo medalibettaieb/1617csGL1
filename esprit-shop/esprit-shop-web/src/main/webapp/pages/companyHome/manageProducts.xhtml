@@ -19,6 +19,18 @@ manage products
 				</h:column>
 				<h:column>
 					<f:facet name="header">
+						<h:outputText value="price" />
+					</f:facet>
+					<h:outputText value="#{p.price}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="category" />
+					</f:facet>
+					<h:outputText value="#{p.category}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
 						<h:outputText value="#" />
 					</f:facet>
 					<h:commandButton action="#{productBean.select()}" value="select">
@@ -38,9 +50,8 @@ manage products
 				<h:outputText value="category" />
 				<h:selectOneMenu value="#{productBean.category}">
 					<f:selectItem itemLabel="please select" />
-					<f:selectItem itemLabel="MEKLA" itemValue="#{productBean.category.valueOf(MEKLA)}"/>
-					<f:selectItem itemLabel="LABSA" />
-					<f:selectItem itemLabel="MAWAD_TANDHIF" />
+					<f:selectItems value="#{categoryBean.displayCategories()}" var="c"
+						itemLabel="#{c.name()}" itemValue="#{c.name()}" />
 				</h:selectOneMenu>
 			</h:panelGrid>
 			<h:commandButton action="#{productBean.doDeleteProduct()}"
