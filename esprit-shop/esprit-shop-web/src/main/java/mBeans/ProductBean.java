@@ -8,6 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 
+import entities.Category;
 import entities.Product;
 import services.ProductServicesLocal;
 
@@ -23,21 +24,39 @@ public class ProductBean {
 	private ProductServicesLocal productServicesLocal;
 	@ManagedProperty(value = "#{identity}")
 	private Identity identity;
-
-	public List<Product> getProducts() {
-		products = productServicesLocal.findProductsByCompany(identity.getUser().getId());
-		return products;
-	}
+	private Category category;
 
 	public void select() {
 		displayF1 = false;
 		displayF2 = true;
 	}
 
+	public void doSaveOrUpdate() {
+		product.setCategory(category);
+		productServicesLocal.addProductWithCompany(product, identity.getUser().getId());
+		cancel();
+	}
+
+	public void doDeleteProduct() {
+		productServicesLocal.deleteProduct(product.getId());
+		cancel();
+	}
+
+	public void selectForNew() {
+		displayF1 = false;
+		displayF2 = true;
+		product = new Product();
+	}
+
 	public void cancel() {
 		displayF1 = true;
 		displayF2 = false;
 		product = new Product();
+	}
+
+	public List<Product> getProducts() {
+		products = productServicesLocal.findProductsByCompany(identity.getUser().getId());
+		return products;
 	}
 
 	public void setProducts(List<Product> products) {
@@ -74,6 +93,14 @@ public class ProductBean {
 
 	public void setProduct(Product product) {
 		this.product = product;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 }

@@ -27,15 +27,26 @@ manage products
 					</h:commandButton>
 				</h:column>
 			</h:dataTable>
-			<h:commandButton action="update" value="NEW" />
+			<h:commandButton action="#{productBean.selectForNew()}" value="NEW" />
 		</h:form>
 		<h:form id="f2" rendered="#{productBean.displayF2}">
 			<h:panelGrid columns="2">
 				<h:outputText value="name" />
 				<h:inputText value="#{productBean.product.name}" />
+				<h:outputText value="price" />
+				<h:inputText value="#{productBean.product.price}" />
+				<h:outputText value="category" />
+				<h:selectOneMenu value="#{productBean.category}">
+					<f:selectItem itemLabel="please select" />
+					<f:selectItem itemLabel="MEKLA" itemValue="#{productBean.category.valueOf(MEKLA)}"/>
+					<f:selectItem itemLabel="LABSA" />
+					<f:selectItem itemLabel="MAWAD_TANDHIF" />
+				</h:selectOneMenu>
 			</h:panelGrid>
-			<h:commandButton action="update" value="delete" />
-			<h:commandButton action="update" value="save or update" />
+			<h:commandButton action="#{productBean.doDeleteProduct()}"
+				value="delete" />
+			<h:commandButton action="#{productBean.doSaveOrUpdate()}"
+				value="save or update" />
 			<h:commandButton action="#{productBean.cancel()}" value="cancel" />
 
 

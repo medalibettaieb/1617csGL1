@@ -78,4 +78,10 @@ public class ProductServices implements ProductServicesRemote, ProductServicesLo
 		return query.getResultList();
 	}
 
+	@Override
+	public void deleteProduct(int productId) {
+		entityManager.remove(findProductById(productId));
+
+	}
+
 }
