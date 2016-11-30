@@ -22,6 +22,8 @@ public interface ProductServicesLocal {
 	Map<Product, Integer> findToTalQuantitySoldOfProductByStore(int storeId);
 
 	List<Product> findProductsByCompany(int companyId);
-	
+
 	void deleteProduct(int productId);
+
+	List<Product> findAllProducts();
 }

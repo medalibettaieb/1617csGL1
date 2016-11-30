@@ -39,7 +39,6 @@ public class LoginFilter implements Filter {
 			throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) servletRequest;
 		HttpServletResponse response = (HttpServletResponse) servletResponse;
-		System.out.println(request);
 		Identity identity = (Identity) request.getSession().getAttribute("identity");
 		if (identity != null && identity.getIsLogged()) {
 			filterChain.doFilter(request, response);

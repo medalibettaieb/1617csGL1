@@ -42,17 +42,24 @@ manage products
 			<h:commandButton action="#{productBean.selectForNew()}" value="NEW" />
 		</h:form>
 		<h:form id="f2" rendered="#{productBean.displayF2}">
-			<h:panelGrid columns="2">
+			<h:panelGrid columns="3">
 				<h:outputText value="name" />
-				<h:inputText value="#{productBean.product.name}" />
+				<h:inputText value="#{productBean.product.name}" required="true"
+					id="name">
+					<f:validator validatorId="pv" />
+				</h:inputText>
+				<h:message for="name" style="color:red" />
 				<h:outputText value="price" />
-				<h:inputText value="#{productBean.product.price}" />
+				<h:inputText value="#{productBean.product.price}" id="price" required="true">
+				</h:inputText>
+				<h:message for="price" style="color:red" />
 				<h:outputText value="category" />
-				<h:selectOneMenu value="#{productBean.category}">
+				<h:selectOneMenu value="#{productBean.category}" id="cat">
 					<f:selectItem itemLabel="please select" />
 					<f:selectItems value="#{categoryBean.displayCategories()}" var="c"
 						itemLabel="#{c.name()}" itemValue="#{c.name()}" />
 				</h:selectOneMenu>
+				<h:message for="cat" style="color:red" />
 			</h:panelGrid>
 			<h:commandButton action="#{productBean.doDeleteProduct()}"
 				value="delete" />

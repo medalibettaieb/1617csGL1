@@ -84,4 +84,8 @@ public class ProductServices implements ProductServicesRemote, ProductServicesLo
 
 	}
 
+	@Override
+	public List<Product> findAllProducts() {
+		return entityManager.createQuery("SELECT p FROM Product p", Product.class).getResultList();
+	}
 }

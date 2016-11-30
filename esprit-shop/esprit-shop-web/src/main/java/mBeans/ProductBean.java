@@ -103,4 +103,8 @@ public class ProductBean {
 		this.category = category;
 	}
 
+	public List<Product> doFindAllProducts() {
+		return productServicesLocal.findAllProducts();
+	}
+
 }
