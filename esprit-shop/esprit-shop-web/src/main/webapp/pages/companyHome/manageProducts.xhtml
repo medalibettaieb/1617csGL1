@@ -38,6 +38,13 @@ manage products
 							target="#{productBean.product}"></f:setPropertyActionListener>
 					</h:commandButton>
 				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="#" />
+					</f:facet>
+					<h:commandButton action="#{productBean.doDeleteProduct(p)}"
+				value="delete" />
+				</h:column>
 			</h:dataTable>
 			<h:commandButton action="#{productBean.selectForNew()}" value="NEW" />
 		</h:form>
@@ -61,8 +68,6 @@ manage products
 				</h:selectOneMenu>
 				<h:message for="cat" style="color:red" />
 			</h:panelGrid>
-			<h:commandButton action="#{productBean.doDeleteProduct()}"
-				value="delete" />
 			<h:commandButton action="#{productBean.doSaveOrUpdate()}"
 				value="save or update" />
 			<h:commandButton action="#{productBean.cancel()}" value="cancel" />

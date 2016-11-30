@@ -37,7 +37,7 @@ public class ProductBean {
 		cancel();
 	}
 
-	public void doDeleteProduct() {
+	public void doDeleteProduct(Product product) {
 		productServicesLocal.deleteProduct(product.getId());
 		cancel();
 	}

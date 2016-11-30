@@ -9,6 +9,7 @@ import java.util.Map.Entry;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.model.DataModel;
 
 import entities.Product;
 import services.ProductServicesLocal;
@@ -73,7 +74,6 @@ public class CartBean {
 
 	public List<Product> getProducts() {
 		products = productServicesLocal.findAllProducts();
-		System.out.println(products.size());
 		return products;
 	}
 

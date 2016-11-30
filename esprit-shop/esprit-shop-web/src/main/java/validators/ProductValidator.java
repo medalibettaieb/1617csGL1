@@ -22,7 +22,7 @@ public class ProductValidator implements Validator {
 		List<Product> products = productBean.doFindAllProducts();
 		for (Product p : products) {
 			if (p.getName().equalsIgnoreCase(value.toString())) {
-				FacesMessage msg = new FacesMessage("adding product failed.", "product name alrady exist");
+				FacesMessage msg = new FacesMessage("adding product failed.", "product name already exists");
 				msg.setSeverity(FacesMessage.SEVERITY_ERROR);
 				throw new ValidatorException(msg);
 
